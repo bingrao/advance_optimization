@@ -35,16 +35,20 @@ def data_gen_numpy(nums):
 	return convert_numpy(data_gen(nums))
 
 
-
-# data: A 2D numpy array (m*n)
+# m: the size of ground set
+# n: the size of subsets
+# z: the size of elements in a subset
+# Input:  data: A 2D numpy array (n*z)
+# Output: [n*m] with true or false value
 def get_mask(data):
-	universe = np.unique(data)  # A 1D numpy array k*1
-	mask = (universe == data[..., None]).any(axis=1)  # A 2D numpy m*k
+	universe = np.unique(data)  # A 1D numpy array m*1
+	mask = (universe == data[..., None]).any(axis=1)  # A 2D numpy n*m
+	# mask = mask.astype(int)  # Convert true/false value to 1/0
 	return mask
 
 
 def get_mask(data, universe):
-	mask = (universe == data[..., None]).any(axis=1)  # A 2D numpy m*k
+	mask = (universe == data[..., None]).any(axis=1)  # A 2D numpy n*m
 	return mask
 
 

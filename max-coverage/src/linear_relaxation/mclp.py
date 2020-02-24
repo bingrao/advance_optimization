@@ -111,7 +111,7 @@ def mclp(points,K,radius,M):
     for i in range(I):
         m.addConstr(quicksum(x[j] for j in np.where(D[i]==1)[0]) >= y[i])
 
-    m.setObjective(quicksum(y[i]for i in range(I)),GRB.MAXIMIZE)
+    m.setObjective(quicksum(y[i] for i in range(I)),GRB.MAXIMIZE)
     m.setParam('OutputFlag', 0)
     m.optimize()
     end = time.time()
